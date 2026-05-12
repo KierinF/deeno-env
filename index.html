@@ -25,7 +25,7 @@
       radial-gradient(circle at 78% 64%, rgba(0,0,0,0.025) 0 1px, transparent 1px);
     background-size: 18px 18px, 22px 22px;
   }
-  .app{ max-width:1280px; margin:0 auto; padding:18px 18px 60px; }
+  .app{ max-width:none; margin:0 auto; padding:18px 24px 60px; }
 
   /* annotation chrome */
   .annotate{
@@ -680,7 +680,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
 .sec.dark .cta-form .mono[style*="color:var(--accent)"]{ color: var(--accent) !important; font-weight: 600; opacity: 1; letter-spacing: 1.5px; }
 </style>
 </head>
-<body>
+<body data-color="sage" data-font="bricolage">
 <div class="app">
 
   <!-- chrome -->
@@ -1528,44 +1528,8 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
   });
 })();
 </script>
-<aside class="ds-panel">
-  <header>
-    <h5>VISUAL OPTIONS</h5>
-    <button class="close" id="dsClose" aria-label="close">✕</button>
-  </header>
-  <div class="group">
-    <span class="lbl-g">ACCENT</span>
-    <div class="swatches" id="dsColor">
-      <div class="sw" data-c="mustard" style="background:#c9a747" title="Mustard"></div>
-      <div class="sw" data-c="amber"   style="background:#b8821b" title="Amber"></div>
-      <div class="sw" data-c="olive"   style="background:#a89339" title="Olive"></div>
-      <div class="sw" data-c="forest"  style="background:#4f7d3a" title="Forest"></div>
-      <div class="sw on" data-c="sage"    style="background:#6b8e5a" title="Sage"></div>
-      <div class="sw" data-c="moss"    style="background:#3d5a3e" title="Moss"></div>
-      <div class="sw" data-c="slate"   style="background:#34536b" title="Slate"></div>
-      <div class="sw" data-c="navy"    style="background:#1f3a5b" title="Navy"></div>
-      <div class="sw" data-c="teal"    style="background:#2a6b6e" title="Teal"></div>
-    </div>
-  </div>
-  <div class="group">
-    <span class="lbl-g">FONT</span>
-    <div class="fonts" id="dsFont">
-      <button class="fb" data-f="wireframe">HAND</button>
-      <button class="fb" data-f="editorial">EDITORIAL</button>
-      <button class="fb" data-f="industrial">INDUSTRIAL</button>
-      <button class="fb on" data-f="bricolage">BRICOLAGE</button>
-    </div>
-  </div>
-</aside>
-<button class="ds-toggle" id="dsToggle" aria-label="visual options">◐ VISUAL OPTIONS</button>
-
 <script>
 (function(){
-  // defaults
-  if(!document.body.dataset.color) document.body.dataset.color = 'sage';
-  if(!document.body.dataset.font)   document.body.dataset.font   = 'bricolage';
-  document.body.dataset.dsOpen = 'true';
-
   // tag final CTA section with id
   const finalSec = [...document.querySelectorAll('.sec.dark')].pop();
   if(finalSec) finalSec.id = 'finalCTA';
@@ -1644,23 +1608,6 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     head.appendChild(close);
   }
 
-  // Visual-options panel wiring
-  const toggle = document.getElementById('dsToggle');
-  const closeBtn = document.getElementById('dsClose');
-  toggle.addEventListener('click', () => { document.body.dataset.dsOpen = 'true'; });
-  closeBtn.addEventListener('click', () => { document.body.dataset.dsOpen = 'false'; });
-  document.querySelectorAll('#dsColor .sw').forEach(s => {
-    s.addEventListener('click', () => {
-      document.querySelectorAll('#dsColor .sw').forEach(x => x.classList.toggle('on', x===s));
-      document.body.dataset.color = s.dataset.c;
-    });
-  });
-  document.querySelectorAll('#dsFont .fb').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('#dsFont .fb').forEach(x => x.classList.toggle('on', x===b));
-      document.body.dataset.font = b.dataset.f;
-    });
-  });
 })();
 </script>
 </body>
