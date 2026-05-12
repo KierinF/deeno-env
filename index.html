@@ -25,10 +25,11 @@
       radial-gradient(circle at 78% 64%, rgba(0,0,0,0.025) 0 1px, transparent 1px);
     background-size: 18px 18px, 22px 22px;
   }
-  .app{ max-width:none; margin:0 auto; padding:18px 24px 60px; }
+  .app{ max-width:none; margin:0; padding:0; }
 
-  /* annotation chrome */
-  .annotate{
+  /* annotation chrome (wireframe-only — hidden in production) */
+  .annotate{ display:none; }
+  .annotate-orig{
     display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
     border-bottom:2px dashed var(--ink); padding-bottom:14px; margin-bottom:18px; flex-wrap:wrap;
   }
@@ -37,11 +38,10 @@
   .annotate .right{ font-family:var(--mono); font-size:11px; color:var(--ink-3); text-align:right; line-height:1.6; max-width:55ch; }
   .annotate .right b{ color:var(--ink); }
 
-  /* page frame (simulates browser) */
-  .page{
-    border:2px solid var(--ink); background:var(--paper); box-shadow:6px 6px 0 var(--ink);
-  }
-  .page-head{
+  /* page frame (wireframe-only browser sim — neutralized in production) */
+  .page{ border:0; background:transparent; box-shadow:none; }
+  .page-head{ display:none; }
+  .page-head-orig{
     display:flex; align-items:center; justify-content:space-between; gap:12px;
     padding:8px 14px; background:var(--paper-2); border-bottom:1.5px solid var(--ink);
     font-family:var(--mono); font-size:11px; letter-spacing:.5px;
