@@ -382,6 +382,10 @@
   .arch-modal-body .mphoto::before{ background: linear-gradient(to top right, transparent calc(50% - 0.6px), rgba(0,0,0,0.4) calc(50% - 0.6px) calc(50% + 0.6px), transparent calc(50% + 0.6px)); }
   .arch-modal-body .mphoto::after{ background: linear-gradient(to top left, transparent calc(50% - 0.6px), rgba(0,0,0,0.4) calc(50% - 0.6px) calc(50% + 0.6px), transparent calc(50% + 0.6px)); }
   .arch-modal-body .mphoto > span{ position:relative; z-index:1; background:#f8f5ea; padding: 3px 8px; border:1px solid var(--ink-3); }
+  .arch-modal-body .mphoto.has-image{ background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .arch-modal-body .mphoto.has-image::before,
+  .arch-modal-body .mphoto.has-image::after{ display: none; }
+  .arch-modal-body .mphoto.has-image > span{ display: none; }
   .arch-modal-body .mphoto .cap{
     position:absolute; left:0; right:0; bottom:0; padding:6px 10px;
     background:var(--ink); color:var(--paper);
@@ -522,13 +526,13 @@
 .sec-tag, .sec-note{ display:none !important; }
 .scene .stamp{ display:none !important; }
 .tweaks, .tweaks-fab{ display:none !important; }
-.app{ padding: 0 !important; max-width: 1280px; }
+.app{ padding: 0 !important; max-width: none !important; margin: 0 !important; }
 .sec{ padding: 88px 56px !important; border-bottom-color: rgba(28,28,25,0.08) !important; }
 @media (max-width: 900px){ .sec{ padding: 56px 22px !important; } }
 
 /* trust bar: keep descriptors, just compact it */
-.sec[data-screen-label="02 Trust Bar"]{ padding: 18px 56px !important; }
-@media (max-width: 900px){ .sec[data-screen-label="02 Trust Bar"]{ padding: 18px 22px !important; } }
+.sec[data-screen-label="02 Trust Bar"]{ padding: 0 56px 18px !important; }
+@media (max-width: 900px){ .sec[data-screen-label="02 Trust Bar"]{ padding: 0 22px 18px !important; } }
 .sec[data-screen-label="02 Trust Bar"] .trustbar{ border-color: rgba(28,28,25,0.18); }
 .sec[data-screen-label="02 Trust Bar"] .trustbar > div{ padding: 10px 22px; gap: 3px; border-right-style: solid; border-right-color: rgba(28,28,25,0.15); }
 .sec[data-screen-label="02 Trust Bar"] .trustbar .lbl{ font-size: 9px; letter-spacing: 1.5px; }
@@ -546,6 +550,8 @@
 /* problems = clickable buttons */
 .prob{ cursor:pointer; transition: background 140ms ease, transform 120ms ease, border-color 120ms ease; }
 .prob:hover{ background: var(--accent); transform: translateY(-2px); }
+.prob:hover h4, .prob:hover .body, .prob:hover .mono{ color: var(--ink) !important; }
+.prob:hover .q{ color: var(--ink); }
 
 /* FAQ — expand/collapse */
 .faq-list{ border-top: 0 !important; }
@@ -707,7 +713,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     <div class="nav">
       <div class="left">
         <div class="stamp">DE</div>
-        <div class="name">Deeno Environmental<small>NYC · 5 BOROUGHS</small></div>
+        <div class="name">Deeno Environmental</div>
       </div>
       <div class="links">
         <span class="on">Home</span>
@@ -741,8 +747,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
           <h1 class="h-display">NYC Mold, Lead<br/>&amp; Asbestos <em>handled.</em></h1>
           <div class="body-l" style="max-width:54ch;">Certified inspection, abatement &amp; HPD-compliant reporting for multifamily and commercial properties across all five boroughs.</div>
           <div class="row tight wrap">
-            <div class="btn">☎ Schedule Inspection</div>
-            <div class="btn ghost">Request a Quote →</div>
+            <div class="btn">Get a Free Quote →</div>
           </div>
 
         </div>
@@ -882,7 +887,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
       <span class="sec-note">toggle a hazard — floor plan + copy update together</span>
       <div class="grid-12" style="margin-top:20px;">
         <div class="stack" style="grid-column:1/5;">
-          <h2 class="h1">Three hazards. <em>One floor.</em></h2>
+          <h2 class="h1">Three hazards. <em>One roof.</em></h2>
           <div style="display:flex; border:1.5px solid var(--ink);">
             <button data-l="all" class="lyr-btn on" style="flex:1; background:var(--ink); color:var(--paper); border:0; padding:8px; font-family:var(--hand-h); cursor:pointer;">All</button>
             <button data-l="mold" class="lyr-btn" style="flex:1; background:transparent; border:0; padding:8px; border-left:1.5px solid var(--ink); font-family:var(--hand-h); cursor:pointer;">Mold</button>
@@ -891,7 +896,6 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
           </div>
           <div id="svcPane" class="stack" style="gap:10px;">
             <div data-pane="all" class="svc-pane">
-              <div class="body-l">We inspect, abate &amp; remediate all three across the same site visit. One vendor, one chain of custody, one closeout package.</div>
               <ul class="body" style="margin:8px 0 0; padding-left:18px;">
                 <li><b>Mold</b> — LL55 compliance, water-damage response, clearance.</li>
                 <li><b>Lead</b> — XRF testing, abatement, LL31 turnover programs.</li>
@@ -1128,7 +1132,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
             </div>
 
             <div class="clip law" data-clip="1971">
-              <span class="ntag">LAW · 1971</span>
+              <span class="ntag">LEAD BAN · 1971</span>
               <div class="masthead">New York Daily<small>NOV 1971</small></div>
               <h3 class="headline">City bans lead-based paint in homes.</h3>
               <div class="lede">Mounting evidence of childhood lead poisoning forces the Council's hand.</div>
@@ -1137,7 +1141,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
             </div>
 
             <div class="clip law" data-clip="1985">
-              <span class="ntag">LAW · ~1985</span>
+              <span class="ntag">ACP-5 / ACP-7 · 1985</span>
               <div class="masthead">The Permit Review<small>SPRING 1985</small></div>
               <h3 class="headline">NYC mandates asbestos filing before any DOB permit.</h3>
               <div class="lede">A new investigator class is created. ACP-5 and ACP-7 forms become household terms.</div>
@@ -1146,7 +1150,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
             </div>
 
             <div class="clip law" data-clip="2004">
-              <span class="ntag">LAW · 2004</span>
+              <span class="ntag">LOCAL LAW 1 · 2004</span>
               <div class="masthead">Owner's Daily<small>AUG 2004</small></div>
               <h3 class="headline">Local Law 1: lead is the landlord's problem now.</h3>
               <div class="lede">Pre-1960 multifamily owners face new annual duties.</div>
@@ -1155,7 +1159,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
             </div>
 
             <div class="clip law" data-clip="2018">
-              <span class="ntag">LAW · 2018</span>
+              <span class="ntag">LOCAL LAW 55 · 2018</span>
               <div class="masthead">The Tenant Tribune<small>JAN 2018</small></div>
               <h3 class="headline">Mold &amp; pests join the inspection roster.</h3>
               <div class="lede">Local Law 55 names indoor allergens as actionable health hazards.</div>
@@ -1164,7 +1168,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
             </div>
 
             <div class="clip law" data-clip="2020">
-              <span class="ntag">LAW · 2020</span>
+              <span class="ntag">LOCAL LAW 31 · 2020</span>
               <div class="masthead">New York Daily<small>JAN 2020</small></div>
               <h3 class="headline">Local Law 31 puts XRF in every turnover.</h3>
               <div class="lede">Lead-paint inspections become annual and unit-by-unit in pre-1960 buildings.</div>
@@ -1455,13 +1459,13 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
   }
 
   const data = {
-    '1908': { name:'The Tenement Record', meta:'<b>VOL. XII</b><br/>NEW YORK · MARCH 14, 1908<br/>PRICE: TWO CENTS', byline:'By an architecture correspondent', headline:'A coat of paint that lasts a generation.', deck:'"Purity" and "durability" are the watchwords as walk-ups rise from Houston to 14th.', photo:'HERO PHOTO · tenement row, LES, 1908', cap:'Walk-ups on Orchard Street rise faster than the city can inspect them. Lead-based paint coats every interior surface, top to bottom.', body:["Builders favor lead-based paint for its opacity and washability, citing decades of established use abroad. The new tenements rising across the Lower East Side and Brooklyn are primed, coated and finished with it — top to bottom, sash to skirting.","Down in the cellars, asbestos lagging insulates the new steam boilers. Critics question the safety of both materials; manufacturers cite their long history of industrial use. No environmental law yet governs either."], pull:'"Lead paint — smells nice in the can."<small>— NATIONAL LEAD CO. ADVERTISEMENT, 1923 (PARAPHRASED)</small>' },
-    '1932': { name:'The Borough Builder', meta:'<b>JANUARY 1932</b><br/>FIFTEEN CENTS<br/>VOL. XLI · NO. 1', byline:'By a construction correspondent', headline:'A miracle mineral comes to Manhattan.', deck:'Architects of the new prestige towers wrap every steam riser in asbestos. The selling point is fire.', photo:'HERO PHOTO · Art Deco riser closet, 1932', cap:'A new Central Park West tower lines its risers in chrysotile lagging. Tenants pay a premium for the "fireproof" address.', body:["Asbestos lagging has become the standard insulation on boilers and steam risers throughout the new luxury apartment houses rising on the West Side. Marketed as fireproof, durable and pest-resistant, it is installed without precaution.","Lead paint remains everywhere. The federal asbestos rules that will eventually govern this material are still half a century away."], pull:'"The fireproof apartment of the future."<small>— DAILY NEWS REAL-ESTATE SPREAD, 1934</small>' },
-    '1953': { name:'Postwar Home', meta:'<b>APRIL 1953</b><br/>VOLUME VIII<br/>TWENTY-FIVE CENTS', byline:'By a homes correspondent', headline:'Floors of tomorrow arrive today.', deck:'Vinyl tile, set in mastic, promises maintenance-free kitchens for the new family.', photo:'HERO PHOTO · postwar kitchen · Queens, 1953', cap:'The "miracle floor" of 1953 — 9×9 vinyl tile in asphalt mastic — will become the most common asbestos finding in Queens turnover work.', body:["The postwar building boom is remaking Queens, Brooklyn and the outer Bronx. A new generation of mastics, sealants and finishes follows the GIs home. Asbestos remains a quiet ingredient in most of them.","Lead-based paint, despite mounting evidence of childhood harm, remains the residential standard. The studies that will eventually force a ban are starting now at NYC hospitals."], pull:'"A maintenance-free floor for the modern family."<small>— POSTWAR HOME, APRIL 1953</small>' },
-    '1971': { name:'New York Daily', meta:'<b>NOVEMBER 1971</b><br/>FINAL EDITION<br/>FIFTEEN CENTS', byline:'By a city hall correspondent', headline:'City bans lead-based paint in homes.', deck:'A decade of pediatric studies forces the Council\'s hand. NYC moves first in America.', photo:'HERO PHOTO · City Council vote, NYC, November 1971', cap:'The Council passes the city\'s first lead-paint ban after a decade of pediatric testimony. Federal action follows in 1978.', body:["After ten years of evidence from NYC hospitals linking lead-painted apartments to severe developmental harm in children under six, the City Council passes a residential lead-paint ban — the first major U.S. city to do so.","The federal government will follow in 1978. Late asbestos uses (popcorn ceilings, drop-tile, spray-on fireproofing) continue through the early 1980s."], pull:'"It\'s not the children who are sick. It\'s the buildings."<small>— PEDIATRIC RESEARCHER, COUNCIL TESTIMONY 1971 (PARAPHRASED)</small>' },
+    '1908': { name:'The Tenement Record', meta:'<b>VOL. XII</b><br/>NEW YORK · MARCH 14, 1908', byline:'By an architecture correspondent', headline:'A coat of paint that lasts a generation.', deck:'"Purity" and "durability" are the watchwords as walk-ups rise from Houston to 14th.', photo:'HERO PHOTO · tenement row, LES, 1908', cap:'Walk-ups on Orchard Street rise faster than the city can inspect them. Lead-based paint coats every interior surface, top to bottom.', body:["Builders favor lead-based paint for its opacity and washability, citing decades of established use abroad. The new tenements rising across the Lower East Side and Brooklyn are primed, coated and finished with it — top to bottom, sash to skirting.","Down in the cellars, asbestos lagging insulates the new steam boilers. Critics question the safety of both materials; manufacturers cite their long history of industrial use. No environmental law yet governs either."], pull:'"Lead paint — smells nice in the can."<small>— NATIONAL LEAD CO. ADVERTISEMENT, 1923 (PARAPHRASED)</small>' },
+    '1932': { name:'The Borough Builder', meta:'<b>JANUARY 1932</b><br/>VOL. XLI · NO. 1', byline:'By a construction correspondent', headline:'A miracle mineral comes to Manhattan.', deck:'Architects of the new prestige towers wrap every steam riser in asbestos. The selling point is fire.', photo:'HERO PHOTO · Art Deco riser closet, 1932', cap:'A new Central Park West tower lines its risers in chrysotile lagging. Tenants pay a premium for the "fireproof" address.', body:["Asbestos lagging has become the standard insulation on boilers and steam risers throughout the new luxury apartment houses rising on the West Side. Marketed as fireproof, durable and pest-resistant, it is installed without precaution.","Lead paint remains everywhere. The federal asbestos rules that will eventually govern this material are still half a century away."], pull:'"The fireproof apartment of the future."<small>— DAILY NEWS REAL-ESTATE SPREAD, 1934</small>' },
+    '1953': { name:'Postwar Home', meta:'<b>APRIL 1953</b><br/>VOLUME VIII', byline:'By a homes correspondent', headline:'Floors of tomorrow arrive today.', deck:'Vinyl tile, set in mastic, promises maintenance-free kitchens for the new family.', photo:'HERO PHOTO · postwar kitchen · Queens, 1953', cap:'The "miracle floor" of 1953 — 9×9 vinyl tile in asphalt mastic — will become the most common asbestos finding in Queens turnover work.', body:["The postwar building boom is remaking Queens, Brooklyn and the outer Bronx. A new generation of mastics, sealants and finishes follows the GIs home. Asbestos remains a quiet ingredient in most of them.","Lead-based paint, despite mounting evidence of childhood harm, remains the residential standard. The studies that will eventually force a ban are starting now at NYC hospitals."], pull:'"A maintenance-free floor for the modern family."<small>— POSTWAR HOME, APRIL 1953</small>' },
+    '1971': { name:'New York Daily', meta:'<b>NOVEMBER 1971</b><br/>FINAL EDITION', byline:'By a city hall correspondent', headline:'City bans lead-based paint in homes.', deck:'A decade of pediatric studies forces the Council\'s hand. NYC moves first in America.', photo:'HERO PHOTO · City Council vote, NYC, November 1971', cap:'The Council passes the city\'s first lead-paint ban after a decade of pediatric testimony. Federal action follows in 1978.', body:["After ten years of evidence from NYC hospitals linking lead-painted apartments to severe developmental harm in children under six, the City Council passes a residential lead-paint ban — the first major U.S. city to do so.","The federal government will follow in 1978. Late asbestos uses (popcorn ceilings, drop-tile, spray-on fireproofing) continue through the early 1980s."], pull:'"It\'s not the children who are sick. It\'s the buildings."<small>— PEDIATRIC RESEARCHER, COUNCIL TESTIMONY 1971 (PARAPHRASED)</small>' },
     '1985': { name:'The Permit Review', meta:'<b>SPRING 1985</b><br/>NUMBER 32<br/>FOR THE TRADE', byline:'By a permits correspondent', headline:'No filing, no permit.', deck:'NYC creates a new licensed-investigator class and requires asbestos filings before any DOB action.', photo:'HERO PHOTO · renovation site, 1986', cap:'"Investigator filed." A new line on every NYC building permit. ACP-5 and ACP-7 forms enter the owner\'s vocabulary.', body:["Following federal action on asbestos earlier in the decade, NYC tightens its own framework. A new licensed-investigator class is created, and ACP-5 and ACP-7 forms become routine paperwork.","No demolition or alteration permit may be pulled without first filing an asbestos investigation. The era of \"just renovate it\" ends."], pull:'"Every NYC renovation now starts with a filing."<small>— THE PERMIT REVIEW, EDITORIAL, SPRING 1985</small>' },
-    '2004': { name:"Owner's Daily", meta:'<b>AUGUST 2004</b><br/>VOLUME XXII<br/>$1.50', byline:'By a real-estate correspondent', headline:'Lead is the landlord\'s problem now.', deck:'Local Law 1 of 2004 codifies annual inspections, friction surfaces and ten-year recordkeeping.', photo:'HERO PHOTO · HPD inspector, interior, 2005', cap:'Friction surfaces — sash windows, door jambs — are named for the first time in NYC law.', body:["LL1 enacts the most aggressive lead-paint framework in the country. Owners of pre-1960 buildings with children under six must now identify and remediate hazards on an annual basis.","Friction surfaces are explicitly named. Recordkeeping must be retained ten years. Compliance becomes a permanent operating line item for every NYC multifamily portfolio."], pull:'"Annual visual inspections. Friction surfaces. Recordkeeping retained ten years."<small>— LL1 OF 2004, PARAPHRASED</small>' },
-    '2018': { name:'The Tenant Tribune', meta:'<b>JANUARY 2018</b><br/>EDITION FORTY-FIVE<br/>$2.00', byline:'By a public-health correspondent', headline:'Mold &amp; pests join the inspection roster.', deck:'Local Law 55 names indoor allergens as actionable health hazards.', photo:'HERO PHOTO · tenant + inspector, UWS, 2018', cap:'After years of asthma research linking household mold and pest droppings to chronic childhood disease, LL55 makes inspection annual.', body:["LL55 of 2018 brings mold and pests into the annual inspection roster. Owners are required to inspect and remediate indoor allergen hazards every year, and at every unit turnover.","The law arrives after years of public-health research linking household allergens to chronic respiratory disease in children. Mold, formerly an aesthetic complaint, is now a health hazard with a legal deadline."], pull:'"Indoor allergens are now health hazards — with deadlines."<small>— LL55 OF 2018, PARAPHRASED</small>' },
+    '2004': { name:"Owner's Daily", meta:'<b>AUGUST 2004</b><br/>VOLUME XXII', byline:'By a real-estate correspondent', headline:'Lead is the landlord\'s problem now.', deck:'Local Law 1 of 2004 codifies annual inspections, friction surfaces and ten-year recordkeeping.', photo:'HERO PHOTO · HPD inspector, interior, 2005', cap:'Friction surfaces — sash windows, door jambs — are named for the first time in NYC law.', body:["LL1 enacts the most aggressive lead-paint framework in the country. Owners of pre-1960 buildings with children under six must now identify and remediate hazards on an annual basis.","Friction surfaces are explicitly named. Recordkeeping must be retained ten years. Compliance becomes a permanent operating line item for every NYC multifamily portfolio."], pull:'"Annual visual inspections. Friction surfaces. Recordkeeping retained ten years."<small>— LL1 OF 2004, PARAPHRASED</small>' },
+    '2018': { name:'The Tenant Tribune', meta:'<b>JANUARY 2018</b><br/>EDITION FORTY-FIVE', byline:'By a public-health correspondent', headline:'Mold &amp; pests join the inspection roster.', deck:'Local Law 55 names indoor allergens as actionable health hazards.', photo:'HERO PHOTO · tenant + inspector, UWS, 2018', cap:'After years of asthma research linking household mold and pest droppings to chronic childhood disease, LL55 makes inspection annual.', body:["LL55 of 2018 brings mold and pests into the annual inspection roster. Owners are required to inspect and remediate indoor allergen hazards every year, and at every unit turnover.","The law arrives after years of public-health research linking household allergens to chronic respiratory disease in children. Mold, formerly an aesthetic complaint, is now a health hazard with a legal deadline."], pull:'"Indoor allergens are now health hazards — with deadlines."<small>— LL55 OF 2018, PARAPHRASED</small>' },
     '2020': { name:'New York Daily', meta:'<b>JANUARY 2020</b><br/>VOL. CXLII<br/>FREE', byline:'By a policy correspondent', headline:'Local Law 31 puts XRF in every turnover.', deck:'Lead-paint inspections become annual and unit-by-unit in pre-1960 buildings.', photo:'HERO PHOTO · turnover XRF, pre-1960 walk-up, 2021', cap:'An XRF gun, every turnover, every unit. After LL31, "annual + turnover" is the new operating rhythm.', body:["LL31 expands LL1's framework: an XRF-based investigation is required at every unit turnover in pre-1960 buildings, plus documented annual visuals across every unit.","Combined with LL55, the picture is now complete — a continuous inspection cycle for mold and lead, replacing the one-time event-driven compliance of the prior century."], pull:'"Annual. Turnover. Documented."<small>— THE NYC COMPLIANCE SHORTHAND, 2026</small>' }
   };
   const clipOrder = clips.map(c => c.dataset.clip);
@@ -1488,6 +1492,19 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     document.getElementById('mHeadline').innerHTML = d.headline;
     document.getElementById('mDeck').innerHTML = d.deck;
     document.getElementById('mPhotoLabel').textContent = d.photo;
+    const mphotoEl = modal.querySelector('.mphoto');
+    const clipEl = document.querySelector('.clip[data-clip="' + k + '"]');
+    const nphotoEl = clipEl ? clipEl.querySelector('.nphoto') : null;
+    const bg = nphotoEl ? nphotoEl.style.backgroundImage : '';
+    if(mphotoEl){
+      if(bg){
+        mphotoEl.style.backgroundImage = bg;
+        mphotoEl.classList.add('has-image');
+      } else {
+        mphotoEl.style.backgroundImage = '';
+        mphotoEl.classList.remove('has-image');
+      }
+    }
     document.getElementById('mCap').textContent = d.cap;
     document.getElementById('mBody').innerHTML = d.body.map(p => '<p>' + p + '</p>').join('');
     document.getElementById('mPull').innerHTML = d.pull;
