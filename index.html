@@ -100,6 +100,7 @@
   .nav .links span.has-dd .dd > div:last-child{ border-bottom:0; }
   .nav .links span.has-dd:hover .dd{ display:block; }
   .nav .phone{ font-family:var(--hand-h); font-size:18px; padding:6px 12px; background:var(--accent); border:1.8px solid var(--ink); }
+  .nav .logo{ height: 48px; width: auto; display: block; }
 
   /* primitives */
   .lbl{ font-family:var(--mono); font-size:10px; color:var(--ink-3); letter-spacing:.7px; text-transform:uppercase; }
@@ -112,7 +113,10 @@
   .h2{ font-family:var(--hand-h); font-size:32px; line-height:1.05; margin:0; }
   .h3{ font-family:var(--hand-h); font-size:22px; line-height:1.1; margin:0; }
   .body-l{ font-family:var(--hand); font-size:18px; line-height:1.45; }
+  .body-l.hero-sub{ font-size: 24px; line-height: 1.4; }
   .body{ font-family:var(--hand); font-size:15px; line-height:1.5; color:var(--ink-2); }
+  .svc-pane .body, .svc-pane ul.body{ font-size: 18px; line-height: 1.55; }
+  .svc-pane ul.body li{ margin-bottom: 4px; }
   .body.dark{ color:#d4d0c4; }
   .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
   .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
@@ -712,8 +716,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     ============================================================= -->
     <div class="nav">
       <div class="left">
-        <div class="stamp">DE</div>
-        <div class="name">Deeno Environmental</div>
+        <img src="images/logo.png" alt="Deeno Environmental" class="logo" />
       </div>
       <div class="phone btn">Get a Free Quote →</div>
     </div>
@@ -727,7 +730,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
       <div class="grid-12" style="margin-top:20px; align-items:center;">
         <div class="stack" style="grid-column:1/7; align-self:center;">
           <h1 class="h-display">NYC Mold, Lead<br/>&amp; Asbestos <em>handled.</em></h1>
-          <div class="body-l" style="max-width:54ch;">Certified inspection, abatement &amp; HPD-compliant reporting for multifamily and commercial properties across all five boroughs.</div>
+          <div class="body-l hero-sub" style="max-width:54ch;">Certified inspection, abatement &amp; HPD-compliant reporting for multifamily and commercial properties across all five boroughs.</div>
           <div class="row tight wrap">
             <div class="btn">Get a Free Quote →</div>
           </div>
@@ -790,7 +793,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     <section class="sec muted" data-screen-label="02 Trust Bar" style="padding-top:34px; padding-bottom:34px;">
       <span class="sec-tag">02 · TRUST BAR</span>
       <span class="sec-note">reduces bounce — credentials before anything else</span>
-      <div class="trustbar" style="margin-top:24px;">
+      <div class="trustbar">
         <div><span class="lbl">CERTIFIED</span><b>EPA Lead-Safe</b></div>
         <div><span class="lbl">LICENSED</span><b>NYS DOL · ICR 56</b><span class="mono" style="color:var(--ink-3);">Asbestos handler</span></div>
         <div><span class="lbl">FILED</span><b>NYC DEP</b><span class="mono" style="color:var(--ink-3);">ACP-5 / ACP-7 investigator</span></div>
@@ -915,7 +918,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
               </ul>
             </div>
           </div>
-          <div class="row tight"><div class="btn">☎ Have us walk yours</div></div>
+          <div class="row tight"><div class="btn">Get a Free Quote →</div></div>
         </div>
         <div style="grid-column:5/13;">
           <div class="plan" id="planV1">
@@ -1164,8 +1167,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
         </div>
 
         <div class="row tight wrap" style="margin-top:22px; justify-content:flex-start;">
-          <div class="btn">☎ Talk to a compliance lead</div>
-          <div class="btn ghost">Read the full Laws →</div>
+          <div class="btn">Get a Free Quote →</div>
         </div>
       </div>
 
@@ -1283,7 +1285,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
         <div class="stack" style="grid-column:1/5;">
           <h2 class="h1">Asked <em>often.</em></h2>
           <div class="body-l">Most of what owners actually want to know, before they pick up the phone.</div>
-          <div class="row tight"><div class="btn">☎ Or just call us</div></div>
+          <div class="row tight"><div class="btn">Get a Free Quote →</div></div>
         </div>
         <div style="grid-column:5/13;">
           <div class="faq-list">
@@ -1308,8 +1310,8 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
       <span class="sec-note" style="color:var(--accent);">low-friction · phone-first</span>
       <div class="grid-12" style="margin-top:30px; align-items:center;">
         <div class="stack" style="grid-column:1/8;">
-          <span class="lbl dark">PICK UP THE PHONE</span>
-          <h2 class="h-display" style="color:var(--paper);">Talk to a <em>licensed inspector.</em></h2>
+          <span class="lbl dark">GET A FREE QUOTE</span>
+          <h2 class="h-display" style="color:var(--paper);">Get a quote in <em>24 hours.</em></h2>
           <div class="body-l" style="color:#d4d0c4; max-width:50ch;">Tell us the building. The age. The issue. We'll tell you what we'd do, what it costs, and when we can be on site.</div>
         </div>
         <div class="stack" style="grid-column:8/13;">
@@ -1536,14 +1538,7 @@ body[data-ds-open="true"] .ds-toggle{ display: none; }
     if(b.classList.contains('ds-toggle')) return;
     const txt = (b.textContent || '').toLowerCase();
     const isCTA =
-      txt.includes('schedule inspection') ||
-      txt.includes('request a quote') ||
-      txt.includes('have us walk') ||
-      txt.includes('talk to a compliance') ||
-      txt.includes('or just call us') ||
-      txt.includes('email a job') ||
-      txt.includes('email portfolio') ||
-      txt.includes('book online') ||
+      txt.includes('get a free quote') ||
       txt.includes('request a quote') ||
       txt.includes('schedule walkthrough') ||
       txt.includes('start cure') ||
